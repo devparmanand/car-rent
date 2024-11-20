@@ -1,0 +1,58 @@
+{{>header}}
+ <title>Cental - Car Rent | Admin</title>
+{{>navbar}}
+
+{{>hero}}
+<div class="container-fluid my-3">
+    <div class="row">
+<div class="col-md-3">
+         {{>sidebar}}
+        </div>
+<div class="col-md-9">
+    <h5 class="bg-primary w-100 p-2 text-light text-center">Testimonial
+    <a href="/admin/testimonial"><i class="fa fa-backward text-light float-end"></i></a>
+    </h5>
+<form action="/admin/testimonial/update/{{data._id}}" method="post" enctype="multipart/form-data">
+<div class="row">
+    <div class="col-md-6 mb-3">
+                <label >Name*</label>
+               <input type="text" name="name" placeholder="Full Name" class="form-control 
+               {{#if error.name}} border-danger {{else}} border-primary{{/if}}" value="{{data.name}}">
+                    {{#if errorMessage.name}} <p class="text-danger">{{errorMessage.name}}</p>{{/if}}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label >Pic*</label>
+                    <input type="file" name="pic" class="form-control {{#if error.pic}} border-danger {{else}} border-primary{{/if}}">
+                    {{#if errorMessage.pic}} <p class="text-danger">{{errorMessage.pic}}</p>{{/if}}
+                </div>
+            </div>
+
+               <div class="mb-3">
+<label >Message*</label>
+<textarea name="message" placeholder="Message" 
+class="form-control {{#if error.message}} border-danger {{else}} border-primary{{/if}}">{{data.message}}</textarea>
+{{#if errorMessage.message}} <p class="text-danger">{{errorMessage.message}}</p>{{/if}}
+              
+                </div>
+                
+                <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Active*</label>
+                   <select name="active" class="form-control border-primary">
+                    <option {{checkDropDown data.active true}} value="true">Yes</option>
+                    <option {{checkDropDown data.active false}} value="false">No</option>
+                   </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary p-2 w-100">Update</button>
+            </div>
+
+    </form>
+        </div>
+    </div>
+
+</div>
+
+{{>footer}}
